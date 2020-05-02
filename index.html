@@ -12,7 +12,11 @@
     <div id="root"></div>
      <script type="text/babel">
         (() => {
+            function Counter(){
+                return <div>0</div>
+            }
             ReactDOM.render(
+                <Counter/>,
                 document.getElementById('root')
             );
         })();
