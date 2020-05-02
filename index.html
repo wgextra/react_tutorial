@@ -12,11 +12,18 @@
     <div id="root"></div>
      <script type="text/babel">
         (() => {
-            function Counter(){
-                return <div>0</div>
+            // function Counter(){
+            //     return <div>0</div>
+            // }
+            function Counter(props){
+                return <div>0 {props.color}</div>
             }
             ReactDOM.render(
-                <Counter/>,
+                <div>
+                    <Counter color="tomato"/>
+                    <Counter color="skyblue"/>
+                    <Counter color="limegreen"/>
+                </div>,
                 document.getElementById('root')
             );
         })();
