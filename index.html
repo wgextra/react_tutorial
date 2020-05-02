@@ -13,7 +13,13 @@
      <script type="text/babel">
         (() => {
             function Counter(props){
-                return <li style={{backgroundColor:props.color}}>0</li>
+                function countUp(){
+                    alert("count up!");
+                }
+                return (
+                    <li style={{backgroundColor:props.color}} onClick={countUp}>
+                    0</li>
+                );
             }
             ReactDOM.render(
                 <div className="container">
