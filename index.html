@@ -46,8 +46,10 @@
                 }
                 countUp(counter) {
                     this.setState(prevState => {
-                        const counters = prevStates.counters.map(x => ({id: x.id, count: x.count, color: x.color}));
-                        const pos = counters.map(x => x.id);
+                        const counters = prevState.counters.map(x => ({id: x.id, count: x.count, color: x.color}));
+                        const pos = counters.map(x => x.id).indexOf(counter.id);
+                        counters[pos].count++;
+                        return {counters:counters};
                     })
                 }
                 render(){
