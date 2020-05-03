@@ -13,18 +13,22 @@
      <script type="text/babel">
         (() => {
             function Counter(props){
-                return (<li style={{backgroundColor:props.counter.color}}>
+                return (<li style={{backgroundColor:props.counter.color}} onClick={()=>
+                    props.countUp(props.counter)}>
                     {props.counter.id}:{props.counter.count}
                 </li>);
             }
             function CounterList(props){
                 const counters = props.counters
-                    .map(x => <Counter counter={x} key={x.id}/>)
+                    .map(x => <Counter 
+                        counter={x} 
+                        key={x.id}
+                        countUp={props.countUp}
+                    />)
                 return (
                     <ul>
                         {counters}
                     </ul>
-
                 );
             }
 
@@ -38,11 +42,21 @@
                             {id:"C", count:0, color:"limegreen"}
                         ]
                     };
+                    this.countUp=this.countUp.bind(this);
+                }
+                countUp(counter) {
+                    this.setState(prevState => {
+                        const counters = prevStates.counters.map(x => ({id: x.id, count: x.count, color: x.color}));
+                        const pos = counters.map(x => x.id);
+                    })
                 }
                 render(){
                     return (
                         <div className="container">
-                            <CounterList counters={this.state.counters}/>
+                            <CounterList 
+                                counters={this.state.counters}
+                                countUp={this.countUp}
+                                />
                             <div>TOTAL INVENTORY: 3</div>
                         </div>
                     );
